@@ -65,8 +65,13 @@ export function activate(context: vscode.ExtensionContext) {
 
             await vscode.workspace.applyEdit(edit);
 
+            // Format the document after appending the content
+            await vscode.commands.executeCommand(
+              "editor.action.formatDocument"
+            );
+
             vscode.window.showInformationMessage(
-              "URL formatted successfully! Markdown content appended to the active editor."
+              "URL formatted successfully! Markdown content appended and document formatted."
             );
           } catch (error) {
             vscode.window.showErrorMessage((error as Error).message);

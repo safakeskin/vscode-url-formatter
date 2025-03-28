@@ -8,30 +8,63 @@ This is a Visual Studio Code extension that formats URLs into a structured table
 - Formats the parsed URL components into a readable table (in Markdown).
 - Works with unsaved files in the editor.
 
+## Example
+
+Given the URL `https://marketplace.visualstudio.com/search?term=url%20formatter&target=VSCode&category=All%20categories&sortBy=Relevance`, the extension will output:
+
+```markdown
+# URL Components
+
+| Component | Value                        |
+| --------- | ---------------------------- |
+| Protocol  | https://                     |
+| Hostname  | marketplace.visualstudio.com |
+| Domain    | visualstudio.com             |
+| Path      | /search                      |
+
+# Query Parameters
+
+| Key      | Value            |
+| -------- | ---------------- |
+| term     | url%20formatter  |
+| target   | VSCode           |
+| category | All%20categories |
+| sortBy   | Relevance        |
+```
+
 ## Working with the Extension
 
 1. Clone the repository:
 
-   ```
-   git clone https://github.com/safakeskin/vscode-url-formatter.git
-   ```
+```
+
+git clone https://github.com/safakeskin/vscode-url-formatter.git
+
+```
 
 2. Navigate to the project directory:
 
-   ```
-   cd vscode-url-formatter
-   ```
+```
+
+cd vscode-url-formatter
+
+```
 
 3. Install the dependencies:
 
-   ```
-   yarn
-   ```
+```
+
+yarn
+
+```
 
 4. Open the project in Visual Studio Code:
-   ```
-   code .
-   ```
+
+```
+
+code .
+
+```
 
 ## Usage
 
@@ -39,8 +72,9 @@ This is a Visual Studio Code extension that formats URLs into a structured table
 2. Enter a URL in a single line (must start with `http` or `https`).
 3. Run the command `Format URL` from the command palette (Ctrl+Shift+P).
 4. The formatted URL components will be displayed as a table in Markdown in a new untitled file.
-   - You can preview the Markdown content immediately in the editor and decide whether to save it.
-   - You can preview the Markdown using VS Code's built-in Markdown preview (Cmd+K V on Mac).
+
+- You can preview the Markdown content immediately in the editor and decide whether to save it.
+- You can preview the Markdown using VS Code's built-in Markdown preview (Cmd+K V on Mac).
 
 ## Contributing
 
@@ -49,3 +83,7 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
+
+```
+
+```
