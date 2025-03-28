@@ -1,5 +1,5 @@
 export function parseUrl(url: string) {
-  const urlPattern = /^(https?:\/\/)([^\/]+)(\/[^?]*)?(\?.*)?$/;
+  const urlPattern = /^(https?:\/\/)([^\/]+)(\/[^?#]*)?(\?[^#]*)?(#.*)?$/;
   const match = url.match(urlPattern);
 
   if (!match) {
@@ -8,7 +8,7 @@ export function parseUrl(url: string) {
     );
   }
 
-  const [, protocol, host, path = "", params = ""] = match;
+  const [, protocol, host, path = "", params = "", fragment = ""] = match;
 
   const domain = host.split(".").slice(-2).join("."); // Extract domain from host
 
@@ -28,5 +28,6 @@ export function parseUrl(url: string) {
     domain,
     path,
     parameters,
+    fragment: fragment.startsWith("#") ? fragment.slice(1) : "", // Remove the "#" at the start
   };
 }

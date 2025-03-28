@@ -1,4 +1,4 @@
-# URL Formatter Extension
+# URL Formatter
 
 This is a Visual Studio Code extension that formats URLs into a structured table format. It extracts components such as protocol, hostname, domain, path, and parameters from a given URL.
 

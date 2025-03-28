@@ -43,17 +43,30 @@ export function activate(context: vscode.ExtensionContext) {
               parametersTable += `| ${key} | ${value} |\n`;
             }
 
-            const markdownContent = formattedOutput + parametersTable;
+            // Add the fragment table if a fragment exists
+            const fragmentTable = parsedUrl.fragment
+              ? `
+# Fragment
 
-            // Create a new untitled file and populate it with the Markdown content
-            const newDocument = await vscode.workspace.openTextDocument({
-              content: markdownContent,
-              language: "markdown",
-            });
-            await vscode.window.showTextDocument(newDocument);
+| Fragment Value |
+|----------------|
+| ${parsedUrl.fragment} |
+`
+              : "";
+
+            const markdownContent =
+              formattedOutput + parametersTable + fragmentTable;
+
+            // Append the Markdown content to the active editor
+            const edit = new vscode.WorkspaceEdit();
+            const lastLine = document.lineAt(document.lineCount - 1);
+            const position = lastLine.range.end; // Position at the end of the document
+            edit.insert(document.uri, position, `\n\n${markdownContent}`);
+
+            await vscode.workspace.applyEdit(edit);
 
             vscode.window.showInformationMessage(
-              "URL formatted successfully! Markdown content opened in a new untitled file."
+              "URL formatted successfully! Markdown content appended to the active editor."
             );
           } catch (error) {
             vscode.window.showErrorMessage((error as Error).message);

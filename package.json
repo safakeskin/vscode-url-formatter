@@ -1,8 +1,8 @@
 {
   "name": "vscode-url-formatter",
-  "displayName": "URL Formatter Extension",
+  "displayName": "URL Formatter",
   "description": "A VS Code extension that formats URLs into a structured table.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "safakeskin",
   "engines": {
     "vscode": "^1.98.0"
